@@ -6,7 +6,8 @@ public class ProductUtility {
 
     public static Product createDummyProduct () {
         Product product = new Product();
-        product.setProductId("PXXXXXXX");
+        product.setProductId("PXXX");
+        product.setVendorId("VXXX");
         product.setProductName("TEST PRODUCT");
         return product;
     }

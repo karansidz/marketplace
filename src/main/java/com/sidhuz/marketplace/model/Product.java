@@ -12,6 +12,6 @@ public class Product {
     private String vendorName;
     private String currency;
     private int price;
-    private Inventory inventory;
+    private int stockOnHand;
     private List<Image> productImages;
 }
