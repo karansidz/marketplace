@@ -1,0 +1,24 @@
+{
+	"productId": "000001",
+	"productName": "Kookaburra Kahuna",
+	"productDescription": "Lightweight bat with nice pickup and balance, great for grounded shots",
+	"vendorId": "0001",
+	"vendorName": "Kookaburra",
+	"price": 150,
+	"currency": "USD",
+	"stockOnHand": 9 ,
+	"images": [
+		{
+		"imageURL": "https://www.cricketequipmentusa.com/content/images/thumbs/0002696_cricket-bat-kahuna-650-by-kookaburra_550.jpeg",
+		"sequenceNumber" : 1
+	    },
+		{
+		"imageURL": "https://imagelocation.com",
+		"sequenceNumber" : 2
+	    },
+		{
+		"imageURL": "https://imagelocation.com",
+		"sequenceNumber" : 3
+	    }	    
+    ]
+}
