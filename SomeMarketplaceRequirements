@@ -1,0 +1,31 @@
+
+
+marketplace.sidhuz.com/product/save/V123456/P36789
+
+marketplace.sidhu.com/product/show/V123456/P36789
+
+marketplace.sidhuz.com/product/show-all/V123456
+
+marketplace.sidhuz.com/product/show-all
+
+localhost:8080
+
+
+
+ProductService
+---------------
+
+1. Save Product for a given vendor
+2. Fetch Product for a given vendor Id and product Id
+3. Fetch All product for a given vendor Id
+4. Fetch All Product across all vendors.
+5. Validate product Id and Vendor Id are same as in the message.
+
+ProductParseService
+----------------------
+1. Parse incoming JSON or XML message into Product Object.
+2. Parsing should happen based on the vendorId
+
+
+Create Post method for saving product.
+Autowire ProductService into controller and call save.
