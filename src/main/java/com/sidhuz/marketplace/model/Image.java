@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class Image {
-    private String imageUrl;
+    private String url;
     private int seqNbr;
 }

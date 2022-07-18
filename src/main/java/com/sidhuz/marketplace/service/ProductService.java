@@ -5,6 +5,9 @@ import com.sidhuz.marketplace.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class ProductService {
 
@@ -23,6 +26,25 @@ public class ProductService {
             // TODO throw some exception
         }
         return null;
+    }
+
+    public Product get (String productId, String vendorId) {
+        String id = productId + ":" + vendorId;
+        Optional<Product> dbProduct = productRepository.findById(id);
+        if (dbProduct.isPresent()) {
+            return dbProduct.get();
+        } else {
+            //TODO: throw an exception if object isn't there
+            return null;
+        }
+    }
+
+    public List<Product> getAll() {
+        return productRepository.findAll();
+    }
+
+    public List<Product> getVendorProducts(String vendorId) {
+        return productRepository.findAllByVendorId(vendorId);
     }
 
     private boolean validate (String productId, String vendorId, Product product) {

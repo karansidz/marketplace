@@ -1,20 +1,19 @@
 package com.sidhuz.marketplace.repository;
 
 import com.sidhuz.marketplace.model.Product;
-import com.sidhuz.marketplace.util.ProductUtility;
-import org.springframework.stereotype.Component;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Repository
-public class ProductRepository {
+public interface ProductRepository extends MongoRepository<Product, String> {
 
-    public void save (Product product) {
-        // TODO
-        System.out.println("Saving object to the database");
-    }
+    // Reference code on how to query using @query annotation. Using DSL findBy methods are more flexible
+    // @Query("{vendorId :?0}")
+    // List<Product> getProductsByVendor(String vendorId);
 
-    public Product get (String productId, String vendorId) {
-        return ProductUtility.createDummyProduct();
-    }
+    // DSL Query
+    List<Product> findAllByVendorId(String vendorId);
+
 }
