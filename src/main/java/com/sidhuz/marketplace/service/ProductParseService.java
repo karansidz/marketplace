@@ -2,7 +2,7 @@ package com.sidhuz.marketplace.service;
 
 import com.sidhuz.marketplace.model.Image;
 import com.sidhuz.marketplace.model.Product;
-import com.sidhuz.marketplace.util.ProductUtility;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
 import org.springframework.stereotype.Service;
@@ -15,10 +15,11 @@ import java.util.Map;
 @Service
 public class ProductParseService {
 
-
+    @Autowired
+    private VendorService vendorService;
 
     public Product parse(String vendorId, String message) {
-        switch (ProductUtility.getVendorParseType(vendorId)) {
+        switch (vendorService.get(vendorId).getMessageType()) {
             case "Type2Json":
                 return parseType2Json(message);
             case "Type1Xml":
