@@ -1,5 +1,6 @@
 package com.sidhuz.marketplace.service;
 
+import com.google.gson.Gson;
 import com.sidhuz.marketplace.model.Vendor;
 import org.springframework.boot.json.JsonParser;
 import org.springframework.boot.json.JsonParserFactory;
@@ -11,6 +12,11 @@ import java.util.Map;
 public class VendorParseService {
 
     public Vendor parse(String message) {
+        Gson gson = new Gson();
+        return gson.fromJson(message, Vendor.class);
+    }
+
+    public Vendor parse_old(String message) {
         JsonParser parser = JsonParserFactory.getJsonParser();
         Map<String, Object> map = parser.parseMap(message);
         Vendor vendor = new Vendor();
@@ -30,7 +36,6 @@ public class VendorParseService {
                     vendor.setMessageType((String) entry.getValue());
                     break;
                 default:
-                    // TODO: handle case where you get a key that is not mappable
                     break;
             }
         }

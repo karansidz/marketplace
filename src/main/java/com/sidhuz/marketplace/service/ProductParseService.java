@@ -62,12 +62,9 @@ public class ProductParseService {
                     product.setProductImages(parseType1Images((List<Object>) entry.getValue()));
                     break;
                 default:
-                    // TODO: handle case where you get a key that is not mappable
                     break;
             }
         }
-
-        //TODO parse JSON message and assign to correct product attributes using set methods.
         product.generateId();
         return product;
     }
@@ -105,12 +102,9 @@ public class ProductParseService {
                     product.setProductImages(parseType2Images((List<Object>) entry.getValue()));
                     break;
                 default:
-                    // TODO: handle case where you get a key that is not mappable
                     break;
             }
         }
-
-        //TODO parse JSON message and assign to correct product attributes using set methods.
         product.generateId();
         return product;
 

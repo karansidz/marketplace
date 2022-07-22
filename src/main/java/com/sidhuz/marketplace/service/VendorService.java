@@ -1,5 +1,6 @@
 package com.sidhuz.marketplace.service;
 
+import com.sidhuz.marketplace.exception.MarketplaceException;
 import com.sidhuz.marketplace.model.Vendor;
 import com.sidhuz.marketplace.repository.VendorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,9 @@ public class VendorService {
 
     public Vendor save (String vendorId, String message) {
         Vendor vendor = vendorParseService.parse(message);
-        if (validate(vendorId, vendor)) {
+        if (validate(vendorId, vendor) && validateMessageType(vendor.getMessageType())) {
             vendorRepository.save(vendor);
             return vendor;
-        } else {
-            // TODO throw some exception
         }
         return null;
     }
@@ -33,8 +32,7 @@ public class VendorService {
         if (dbVendor.isPresent()) {
             return dbVendor.get();
         } else {
-            //TODO: throw an exception if object isn't there
-            return null;
+            throw new MarketplaceException("Vendor cannot be found for processing " + vendorId);
         }
     }
 
@@ -46,7 +44,18 @@ public class VendorService {
         if (vendor.getVendorId().equals(vendorId)) {
             return true;
         }
-        return false;
+        StringBuilder  stringBuilder = new StringBuilder();
+        stringBuilder.append("Failed to validate vendor during the save. ");
+        stringBuilder.append("Vendor Id ");
+        stringBuilder.append(vendorId);
+        throw new MarketplaceException(stringBuilder.toString());
+    }
+
+    private boolean validateMessageType (String messageType) {
+        if (messageType.equals("Type1Json") || messageType.equals("Type2Json")) {
+            return true;
+        }
+        throw new MarketplaceException("This vendor message type is not supported");
     }
 
 }
