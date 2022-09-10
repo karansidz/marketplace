@@ -24,6 +24,7 @@ public class ProductController {
     }
 
     // TODO create get calls
+    @CrossOrigin
     @GetMapping("/show-product/{product-id}/{vendor-id}")
     public ResponseEntity<Product> showProduct(@PathVariable("vendor-id") String vendorId, @PathVariable("product-id") String productId) {
         Product product = productService.get(productId, vendorId);
